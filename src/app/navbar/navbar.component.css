@@ -1,0 +1,16 @@
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    background-color: black;
+}
+
+li {
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
