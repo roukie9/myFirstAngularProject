@@ -1,68 +1,87 @@
-<h1 class="ms-5 my-5">HOME</h1>
+<h1 class="py-5">HOME</h1>
 
-<div class="d-lg-flex text-center text-lg-start align-items-center m-5">
+<div class="d-lg-flex text-center text-lg-start align-items-center pb-5">
     <img class="homeimg img-fluid" [src]="'./assets/images/' + jsonImages[randomIndex].url"
         [alt]="jsonImages[randomIndex].title" (mouseover)="changeRandom()" (mouseout)="changeRandom()">
 
-    <div class="row">
-        <h2 class="mt-4 mt-lg-0 ms-lg-4">Dynamic style using [ngStyle]</h2>
-        <p class="mx-lg-4" [ngStyle]="{'color': valColor}" (click)="valColor='yellow'">Lorem ipsum dolor sit amet
+    <div class="p-2">
+        <h2 class="mt-4 mt-lg-0">Dynamic style using [ngStyle]</h2>
+        <p [ngStyle]="{'color': valColor}" (click)="valColor='yellow'">Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Cumque iure debitis itaque vero recusandae saepe, expedita quisquam ipsum
             laborum quidem? Eveniet explicabo vel alias laboriosam labore nesciunt, commodi adipisci doloribus.</p>
-        <h2 class="mt-4 mt-lg-0 ms-lg-4">Dynamic class using [ngClass]</h2>
-        <button type="button" class="btn btn-primary ms-lg-4 mt-3" (click)="textPrimary = !textPrimary">Change the parag
+        <h2 class="mt-4 mt-lg-0">Dynamic class using [ngClass]</h2>
+        <button type="button" class="btn btn-primary my-2" (click)="textPrimary = !textPrimary">Change the
+            parag
             class</button>
-        <p class="mx-lg-4" [ngClass]="{'text-primary': textPrimary}">Lorem ipsum
-            dolor sit, amet consectetur adipisicing elit. Nostrum aspernatur laborum laudantium alias expedita nesciunt,
-            quaerat voluptatem totam. Aperiam, voluptates inventore eos est in repellat ducimus tempora corrupti atque
+        <p [ngClass]="{'text-primary': textPrimary}">Lorem ipsum
+            dolor sit, amet consectetur adipisicing elit. Nostrum aspernatur laborum laudantium alias expedita
+            nesciunt,
+            quaerat voluptatem totam. Aperiam, voluptates inventore eos est in repellat ducimus tempora corrupti
+            atque
             libero.</p>
     </div>
+
 </div>
 
 
-<div class="text-center text-lg-start align-items-center m-5">
-    <div class="row">
-        <h2 class="mt-4 mt-lg-0 ms-lg-4">Dynamic display using *ngIf</h2>
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary mt-4" type="button" (click)="displayParag=!displayParag">Change the parag
-                display condition</button>
+
+
+
+
+<div class="col text-center py-5">
+    <div class="row row-cols-lg-2">
+        <div>
+            <h2 class="my-4 mt-lg-0">Dynamic display using *ngIf</h2>
+            <div class="text-center">
+                <button class="btn btn-primary mb-4" type="button" (click)="displayParag=!displayParag">Change the parag
+                    display condition</button>
+            </div>
+            <p *ngIf="displayParag; else otherParag">Lorem ipsum dolor sit, amet consectetur adipisicing
+                elit. Nostrum
+                aspernatur laborum laudantium alias expedita nesciunt, quaerat voluptatem totam. Aperiam, voluptates
+                inventore eos est in repellat ducimus tempora corrupti atque libero.</p>
+
+            <ng-template #otherParag>
+                <p>Ceci est un autre paragraphe...</p>
+            </ng-template>
         </div>
-        <p class="mx-lg-4" *ngIf="displayParag; else otherParag">Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Nostrum
-            aspernatur laborum laudantium alias expedita nesciunt, quaerat voluptatem totam. Aperiam, voluptates
-            inventore eos est in repellat ducimus tempora corrupti atque libero.</p>
 
-        <ng-template #otherParag>
-            <p>Ceci est un autre paragraphe...</p>
-        </ng-template>
-
-        <div class="row mt-3">
-            <h2 class="my-4 mt-lg-0 ms-lg-4">Dynamic display [mySwitch] using *ngSwitchCase</h2>
+        <div>
+            <h2 class="my-4 mt-lg-0">Dynamic display [mySwitch] using *ngSwitchCase</h2>
             <div class="text-center" [ngSwitch]="displaySwitch">
-                <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary" (click)="incSwitch()">Switch</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary mb-4" (click)="incSwitch()">Switch</button>
                 </div>
                 <p *ngSwitchCase="1">Salut</p>
                 <p *ngSwitchCase="2">Je change de contenu</p>
                 <p *ngSwitchCase="3">Quand tu cliques</p>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="row mt-3">
-            <h2 class="my-4 mt-lg-0 ms-lg-4">Dynamic display using *ngFor on Array</h2>
-            <ul>
-                <li *ngFor="let line of arrayImages">Line for {{line}}<br>
-                    <img [src]="'./assets/images/' + line" width="70" alt="">
-                </li>
-            </ul>
-        </div>
 
-        <div class="row mt-3">
-            <h2 class="my-4 mt-lg-0 ms-lg-4">Dynamic display using *ngFor on Json Data</h2>
-            <ul class="row">
-                <li class="col list-unstyled" *ngFor="let img of jsonImages">Line for {{img.title}}<br>
-                    <img [src]="'./assets/images/' + img.url" width="70" alt=""><br>
-                    <span>{{img.author}}</span>
-                </li>
-            </ul>
-        </div>
+
+
+
+
+
+
+<div class="row mt-5">
+    <h2 class="my-4 mt-lg-0">Dynamic display using *ngFor on Array</h2>
+    <ul class="list-unstyled">
+        <li *ngFor="let line of arrayImages">Line for {{line}}<br>
+            <img [src]="'./assets/images/' + line" width="70" alt="">
+        </li>
+    </ul>
+</div>
+
+<div class="row mt-5">
+    <h2 class="my-4 mt-lg-0">Dynamic display using *ngFor on Json Data</h2>
+    <ul class="row">
+        <li class="col list-unstyled" *ngFor="let img of jsonImages">Line for {{img.title}}<br>
+            <img [src]="'./assets/images/' + img.url" width="70" alt=""><br>
+            <span>{{img.author}}</span>
+        </li>
+    </ul>
+</div>
