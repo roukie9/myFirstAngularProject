@@ -12,6 +12,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './pages/details/details.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { DetailsComponent } from './pages/details/details.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

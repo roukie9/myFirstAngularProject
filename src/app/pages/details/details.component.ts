@@ -12,7 +12,11 @@ export class DetailsComponent implements OnInit {
   idPhoto = "";
   infoPhoto:any;
 
-  constructor(private route:ActivatedRoute,private http:HttpClient) { }
+  constructor(private route:ActivatedRoute,private http:HttpClient,private router:Router) { }
+
+goBackToGallery() {
+  this.router.navigateByUrl(`/about`);
+}
 
   ngOnInit(): void {
     console.log('THE PARAMS ID IS:',this.route.snapshot.params.id);
